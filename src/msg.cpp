@@ -7,6 +7,15 @@ msg::msg()
     //ctor
 }
 
+string msg::getName()
+{
+    string temp;
+    cout << "Name:";
+    cin >> temp;
+    return temp;
+}
+
+
 void msg::showHello()
 {
     cout << "1.stone 2.scissors 3.cloth" << endl;
@@ -35,7 +44,6 @@ int msg::getPlayerChoice()
         temp = getch() - 48;
     }
     cout << trans(temp) << endl;
-    ++n;
     return temp;
 }
 const string msg::trans(int choice)
@@ -56,14 +64,20 @@ void msg::showResult(cResult result)
     switch(result.result)
     {
         case -1: cout << "Computer Win" << endl;
+            ++lose; ++n;
             break;
         case 0 : cout << "Tie" << endl;
+            ++n;
             break;
         case 1 : cout << "You Win" << endl;
+            ++win; ++n;
             break;
         default: cerr << "Error" << endl;
     }
-
+}
+void msg::showRate()
+{
+    cout << "Win: " << 100.0 * win / n << "%, Tie: " << 100.0 * (n - win - lose) / n << "%, Lose: " << 100.0 * lose / n << "%" << endl;
 }
 
 

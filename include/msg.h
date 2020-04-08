@@ -16,11 +16,15 @@ class msg
 {
 public:
     unsigned int n = 0;
+    unsigned int win = 0;
+    unsigned int lose = 0;
 
     msg();
+    string getName();
     void showHello();
     void showBegin();
     void showResult(cResult result);
+    void showRate();
     const string trans(int choice);
     int getPlayerChoice();
 };
